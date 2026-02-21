@@ -60,8 +60,7 @@ const Achievements = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            whileHover={{ scale: 1.05, rotate: 1 }}
-                            className="bg-navy-bg border border-white/5 p-6 rounded-xl relative overflow-hidden group hover:border-tech-turquoise/30 transition-all"
+                            className="bg-navy-bg border border-white/5 p-6 rounded-xl relative overflow-hidden group md:hover:border-tech-turquoise/30 transition-all transform md:hover:scale-105 md:hover:rotate-1"
                         >
                             <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-white/5 to-transparent rounded-bl-full -mr-10 -mt-10 group-hover:from-tech-turquoise/20 transition-all" />
 

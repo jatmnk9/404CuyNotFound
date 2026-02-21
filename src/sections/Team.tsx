@@ -49,8 +49,7 @@ const Team = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.2 }}
-                            whileHover={{ y: -10 }}
-                            className="bg-[#0b1221] md:bg-navy-bg/50 md:backdrop-blur-md border border-white/10 rounded-2xl p-6 text-center group hover:border-coral-accent/50 transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_25px_rgba(168,85,247,0.3)]"
+                            className="bg-[#0b1221] md:bg-navy-bg/50 md:backdrop-blur-md border border-white/10 rounded-2xl p-6 text-center group md:hover:border-coral-accent/50 transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)] md:hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] md:hover:-translate-y-2 transform"
                         >
                             <div className="relative w-32 h-32 mx-auto mb-6">
                                 <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-tech-turquoise to-coral-accent rounded-full animate-spin-slow opacity-0 group-hover:opacity-100 transition-opacity blur-md" />

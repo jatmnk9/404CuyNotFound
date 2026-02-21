@@ -39,12 +39,12 @@ const DonorNetwork = () => {
                     const row = rows[i].trim();
                     if (!row) continue;
 
-                    // Regex to handle potential quotes in CSV
-                    const matches = row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
-                    if (matches && matches.length >= 3) {
-                        const timestamp = matches[0].replace(/^"|"$/g, '');
-                        const name = matches[1].replace(/^"|"$/g, '');
-                        const message = row.substring(row.indexOf(name) + name.length + 1).replace(/^"|"$/g, '');
+                    // Better regex to parse CSV accounting for quoted quotes and commas
+                    const cols = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                    if (cols.length >= 3) {
+                        const timestamp = cols[0].replace(/^"|"$/g, '').trim();
+                        const name = cols[1].replace(/^"|"$/g, '').trim();
+                        const message = cols.slice(2).join(',').replace(/^"|"$/g, '').trim();
 
                         parsedDonors.push({
                             id: timestamp,
@@ -89,7 +89,8 @@ const DonorNetwork = () => {
 
         const resizeCanvas = () => {
             canvas.width = container.clientWidth;
-            canvas.height = 500;
+            // Reduce height on mobile for better usability
+            canvas.height = window.innerWidth < 768 ? 350 : 500;
         };
 
         const initNodes = () => {
@@ -315,7 +316,7 @@ const DonorNetwork = () => {
                 {/* Canvas Container */}
                 <div
                     ref={containerRef}
-                    className="w-full h-[500px] relative rounded-3xl border border-white/10 bg-[#111] md:bg-black/20 shadow-2xl overflow-hidden mb-16 md:backdrop-blur-sm"
+                    className="w-full h-[350px] md:h-[500px] relative rounded-3xl border border-white/10 bg-[#111] md:bg-black/20 shadow-2xl overflow-hidden mb-16 md:backdrop-blur-sm"
                 >
                     {donors.length === 0 && (
                         <div className="absolute inset-0 flex items-center justify-center flex-col text-soft-white z-10 pointer-events-none">
