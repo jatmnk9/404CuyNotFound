@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MessageCircle, Gift, CreditCard, Sparkles, Plus, Minus, Copy, Check } from "lucide-react";
+import { MessageCircle, Gift, CreditCard, Sparkles, Plus, Minus, Copy, Check, CalendarDays } from "lucide-react";
 import { useState } from "react";
 import rifaParlante from "../assets/rifa_premio_parlante.png";
 import rifaDesayuno from "../assets/rifa_premio_desayuno.jpeg";
@@ -57,9 +57,15 @@ const Rifa = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16 max-w-4xl mx-auto"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-tech-turquoise/10 border border-tech-turquoise/20 text-tech-turquoise font-medium mb-6">
-                        <Sparkles size={18} />
-                        <span>Evento Especial Activo</span>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-tech-turquoise/10 border border-tech-turquoise/20 text-tech-turquoise font-medium">
+                            <Sparkles size={18} />
+                            <span>Evento Especial Activo</span>
+                        </div>
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-coral-accent/10 border border-coral-accent/20 text-coral-accent font-medium">
+                            <CalendarDays size={18} />
+                            <span>Sorteo: 7 de Marzo del 2026</span>
+                        </div>
                     </div>
 
                     <h2 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
@@ -178,7 +184,7 @@ const Rifa = () => {
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-10 relative z-10 w-full">
                         <div className="bg-white/10 p-6 rounded-2xl w-full md:w-1/2 text-left">
-                            <p className="text-sm text-soft-white mb-1 uppercase tracking-wider font-semibold">1. Yapea el total (S/ {total}):</p>
+                            <p className="text-sm text-soft-white mb-2 uppercase tracking-wider font-semibold">1. Yapea tu total calculado (S/ {total}):</p>
                             <div className="flex items-center gap-3 mb-1">
                                 <p className="text-3xl md:text-4xl font-bold text-tech-turquoise">934 984 373</p>
                                 <button
