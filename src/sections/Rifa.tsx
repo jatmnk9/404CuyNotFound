@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MessageCircle, Gift, CreditCard, Sparkles, Plus, Minus } from "lucide-react";
+import { MessageCircle, Gift, CreditCard, Sparkles, Plus, Minus, Copy, Check } from "lucide-react";
 import { useState } from "react";
 import rifaParlante from "../assets/rifa_premio_parlante.png";
 import rifaDesayuno from "../assets/rifa_premio_desayuno.jpeg";
@@ -7,8 +7,15 @@ import rifaRamo from "../assets/rifa_premio_ramo.jpeg";
 
 const Rifa = () => {
     const [ticketCount, setTicketCount] = useState(1);
+    const [copied, setCopied] = useState<string | null>(null);
     const pricePerTicket = 7;
     const total = ticketCount * pricePerTicket;
+
+    const handleCopy = (text: string, id: string) => {
+        navigator.clipboard.writeText(text);
+        setCopied(id);
+        setTimeout(() => setCopied(null), 2000);
+    };
 
     const handleWhatsAppClick = () => {
         const plural = ticketCount > 1 ? "s" : "";
@@ -94,8 +101,17 @@ const Rifa = () => {
                         {/* Total */}
                         <div className="flex flex-col items-center">
                             <div className="text-soft-white font-medium mb-2 uppercase tracking-wider text-sm">Total a pagar</div>
-                            <div className="text-6xl md:text-8xl font-black text-tech-turquoise drop-shadow-[0_0_25px_rgba(0,245,255,0.4)]">
-                                S/ {total}
+                            <div className="flex items-center gap-4">
+                                <div className="text-6xl md:text-8xl font-black text-tech-turquoise drop-shadow-[0_0_25px_rgba(0,245,255,0.4)]">
+                                    S/ {total}
+                                </div>
+                                <button
+                                    onClick={() => handleCopy(total.toString(), "total")}
+                                    className="p-3 hover:bg-white/20 rounded-full transition-colors text-tech-turquoise"
+                                    title="Copiar total"
+                                >
+                                    {copied === "total" ? <Check size={32} /> : <Copy size={32} />}
+                                </button>
                             </div>
                             {ticketCount > 1 && (
                                 <div className="text-tech-turquoise/60 text-sm mt-2 font-medium">
@@ -163,7 +179,16 @@ const Rifa = () => {
                     <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-10 relative z-10 w-full">
                         <div className="bg-white/10 p-6 rounded-2xl w-full md:w-1/2 text-left">
                             <p className="text-sm text-soft-white mb-1 uppercase tracking-wider font-semibold">1. Yapea el total (S/ {total}):</p>
-                            <p className="text-3xl md:text-4xl font-bold text-tech-turquoise mb-1">934 984 373</p>
+                            <div className="flex items-center gap-3 mb-1">
+                                <p className="text-3xl md:text-4xl font-bold text-tech-turquoise">934 984 373</p>
+                                <button
+                                    onClick={() => handleCopy("934984373", "yape")}
+                                    className="p-2 hover:bg-white/20 rounded-full transition-colors text-tech-turquoise"
+                                    title="Copiar número"
+                                >
+                                    {copied === "yape" ? <Check size={24} /> : <Copy size={24} />}
+                                </button>
+                            </div>
                             <p className="text-white/80">Jatziry Sanchez</p>
                         </div>
                         <div className="hidden md:block w-px h-24 bg-white/10" />
