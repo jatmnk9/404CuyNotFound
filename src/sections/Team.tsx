@@ -8,7 +8,7 @@ const Team = () => {
     const members = [
         {
             name: "Ariana Lopez Julcarima",
-            role: "Fundadora",
+            role: "Participante seleccionado START Hack 2026",
             uni: "Universidad Nacional de Ingeniería",
             career: "Ciencias de la computación",
             image: camilaLopezImg,
@@ -16,7 +16,7 @@ const Team = () => {
         },
         {
             name: "Jatziry Sanchez Wong",
-            role: "Fundadora",
+            role: "Participante seleccionado START Hack 2026",
             uni: "Universidad Nacional Mayor de San Marcos",
             career: "Ingeniería de Software",
             image: jatzirySanchezImg,
@@ -24,7 +24,7 @@ const Team = () => {
         },
         {
             name: "Jose Quispe Cabello",
-            role: "Fundador",
+            role: "Participante seleccionado START Hack 2026",
             uni: "Universidad Nacional Mayor de San Marcos",
             career: "Ingeniería de Software",
             image: joseQuispeImg,
