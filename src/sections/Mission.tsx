@@ -54,7 +54,7 @@ const Mission = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.2 }}
                             whileHover={{ scale: 1.05 }}
-                            className="bg-white/5 backdrop-blur-lg border border-white/10 p-8 rounded-2xl hover:border-tech-turquoise/50 hover:shadow-[0_0_20px_rgba(0,245,255,0.2)] transition-all group"
+                            className="bg-[#0b1221] md:bg-white/5 md:backdrop-blur-lg border border-white/5 p-8 rounded-2xl md:hover:border-tech-turquoise/50 hover:shadow-[0_0_20px_rgba(0,245,255,0.2)] transition-all group"
                         >
                             <div className="mb-6 bg-white/5 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto group-hover:bg-white/10 transition-colors">
                                 {card.icon}

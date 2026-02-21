@@ -115,13 +115,17 @@ const DonorNetwork = () => {
             const centerX = canvas.width / 2;
             const centerY = canvas.height / 2;
 
+            const isMobile = window.innerWidth < 768;
+
             // Draw center logo
             if (centerImage.complete) {
                 const imgSize = 80;
                 ctx.save();
-                // Add a glowing effect
-                ctx.shadowColor = "#00D1C7";
-                ctx.shadowBlur = 30;
+                // Add a glowing effect only on desktop
+                if (!isMobile) {
+                    ctx.shadowColor = "#00D1C7";
+                    ctx.shadowBlur = 30;
+                }
                 ctx.drawImage(centerImage, centerX - imgSize / 2, centerY - imgSize / 2, imgSize, imgSize);
                 ctx.restore();
             }
@@ -139,8 +143,10 @@ const DonorNetwork = () => {
                 const distToMouse = Math.hypot(node.x - mouseX, node.y - mouseY);
                 if (distToMouse < 30) {
                     node.radius = 8;
-                    ctx.shadowColor = node.color;
-                    ctx.shadowBlur = 10;
+                    if (!isMobile) {
+                        ctx.shadowColor = node.color;
+                        ctx.shadowBlur = 10;
+                    }
                 } else {
                     node.radius = 4;
                     ctx.shadowBlur = 0;
@@ -156,16 +162,18 @@ const DonorNetwork = () => {
                 ctx.strokeStyle = gradient;
                 ctx.stroke();
 
-                // Draw lines to nearby nodes
-                for (let j = i + 1; j < nodes.length; j++) {
-                    const otherNode = nodes[j];
-                    const dist = Math.hypot(node.x - otherNode.x, node.y - otherNode.y);
-                    if (dist < 100) {
-                        ctx.beginPath();
-                        ctx.moveTo(node.x, node.y);
-                        ctx.lineTo(otherNode.x, otherNode.y);
-                        ctx.strokeStyle = `rgba(255,255,255, ${0.15 - (dist / 100) * 0.15})`;
-                        ctx.stroke();
+                // Draw lines to nearby nodes (only on desktop to save mobile performance O(N^2))
+                if (!isMobile) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const otherNode = nodes[j];
+                        const dist = Math.hypot(node.x - otherNode.x, node.y - otherNode.y);
+                        if (dist < 100) {
+                            ctx.beginPath();
+                            ctx.moveTo(node.x, node.y);
+                            ctx.lineTo(otherNode.x, otherNode.y);
+                            ctx.strokeStyle = `rgba(255,255,255, ${0.15 - (dist / 100) * 0.15})`;
+                            ctx.stroke();
+                        }
                     }
                 }
 
@@ -277,8 +285,8 @@ const DonorNetwork = () => {
     return (
         <section id="network" className="py-20 bg-navy-bg relative overflow-hidden text-center">
             {/* Background elements */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-coral-accent/10 blur-[150px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-tech-turquoise/10 blur-[150px] rounded-full pointer-events-none" />
+            <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-coral-accent/10 blur-[150px] rounded-full pointer-events-none" />
+            <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-tech-turquoise/10 blur-[150px] rounded-full pointer-events-none" />
 
             <div className="container mx-auto px-4 relative z-10">
                 <motion.div
@@ -307,7 +315,7 @@ const DonorNetwork = () => {
                 {/* Canvas Container */}
                 <div
                     ref={containerRef}
-                    className="w-full h-[500px] relative rounded-3xl border border-white/10 bg-black/20 shadow-2xl overflow-hidden mb-16 backdrop-blur-sm"
+                    className="w-full h-[500px] relative rounded-3xl border border-white/10 bg-[#111] md:bg-black/20 shadow-2xl overflow-hidden mb-16 md:backdrop-blur-sm"
                 >
                     {donors.length === 0 && (
                         <div className="absolute inset-0 flex items-center justify-center flex-col text-soft-white z-10 pointer-events-none">
@@ -323,7 +331,7 @@ const DonorNetwork = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="max-w-xl mx-auto bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-md"
+                    className="max-w-xl mx-auto bg-[#0b1221] md:bg-white/5 border border-white/10 p-8 rounded-2xl md:backdrop-blur-md"
                 >
                     <h3 className="text-2xl font-bold mb-6 text-white text-left">Sumar mi nombre al grafo</h3>
                     <form onSubmit={handleSubmit} className="space-y-4">

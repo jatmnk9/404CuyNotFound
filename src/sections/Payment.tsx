@@ -56,7 +56,7 @@ const Payment = () => {
                         viewport={{ once: true }}
                         className="bg-[#742384] rounded-2xl p-8 relative overflow-hidden group hover:scale-[1.02] transition-transform"
                     >
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl" />
+                        <div className="hidden md:block absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl" />
                         <h3 className="text-2xl font-bold text-white mb-6">Yape</h3>
                         <div className="bg-white p-4 rounded-xl mb-6 w-48 h-48 mx-auto flex items-center justify-center">
                             <img src={qrYapeImg} alt="QR Yape" className="w-full h-full object-contain" />
@@ -121,7 +121,7 @@ const Payment = () => {
                         viewport={{ once: true }}
                         className="bg-[#003087] rounded-2xl p-8 flex flex-col justify-between hover:scale-[1.02] transition-transform relative overflow-hidden"
                     >
-                        <div className="absolute top-0 right-0 w-40 h-40 bg-[#009cde]/30 rounded-full blur-3xl" />
+                        <div className="hidden md:block absolute top-0 right-0 w-40 h-40 bg-[#009cde]/30 rounded-full blur-3xl" />
                         <div>
                             <h3 className="text-3xl font-bold mb-4 font-italic">PayPal</h3>
                             <p className="text-blue-100 mb-8">

@@ -24,24 +24,24 @@ const Rifa = () => {
             color: "from-blue-500 to-cyan-400"
         },
         {
-            title: "Box Desayuno",
-            image: rifaDesayuno,
-            delay: 0.2,
-            color: "from-orange-400 to-rose-400"
-        },
-        {
             title: "Ramito Tejido + Cuadro",
             image: rifaRamo,
             delay: 0.3,
             color: "from-purple-500 to-pink-400"
+        },
+        {
+            title: "Box Desayuno",
+            image: rifaDesayuno,
+            delay: 0.2,
+            color: "from-orange-400 to-rose-400"
         }
     ];
 
     return (
         <section className="py-24 bg-black relative overflow-hidden" id="rifa">
             {/* Background Gradients */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-coral-accent/10 blur-[120px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-tech-turquoise/10 blur-[120px] rounded-full pointer-events-none" />
+            <div className="hidden md:block absolute top-0 right-0 w-[600px] h-[600px] bg-coral-accent/10 blur-[120px] rounded-full pointer-events-none" />
+            <div className="hidden md:block absolute bottom-0 left-0 w-[600px] h-[600px] bg-tech-turquoise/10 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="container mx-auto px-4 relative z-10">
                 <motion.div
@@ -67,7 +67,7 @@ const Rifa = () => {
                         Recaudamos fondos para representar al Perú en la competencia de innovación y tecnología más grande de Europa, en Suiza. ¡Ayúdanos a llegar y gana premios increíbles!
                     </p>
 
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-md inline-flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                    <div className="bg-[#0b1221] md:bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 md:backdrop-blur-md inline-flex flex-col md:flex-row items-center gap-8 md:gap-16">
                         {/* Selector de cantidad */}
                         <div className="flex flex-col items-center">
                             <span className="text-soft-white font-medium mb-4 uppercase tracking-wider text-sm">¿Cuántas rifas deseas?</span>

@@ -48,7 +48,7 @@ const Support = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="bg-gradient-to-r from-coral-accent/20 to-tech-turquoise/20 border border-tech-turquoise/30 rounded-3xl p-10 text-center max-w-4xl mx-auto backdrop-blur-md mb-24"
+                    className="bg-[#0b1221] md:bg-gradient-to-r md:from-coral-accent/20 md:to-tech-turquoise/20 border border-tech-turquoise/30 rounded-3xl p-10 text-center max-w-4xl mx-auto md:backdrop-blur-md mb-24"
                 >
                     <h3 className="text-3xl font-bold mb-4">Apoyo Directo</h3>
                     <p className="text-soft-white mb-8 text-lg">

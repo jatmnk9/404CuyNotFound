@@ -25,7 +25,7 @@ const Navbar = () => {
 
     return (
         <nav
-            className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-navy-bg/80 backdrop-blur-md py-4 border-b border-white/10" : "bg-transparent py-6"
+            className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-navy-bg md:bg-navy-bg/80 md:backdrop-blur-md py-4 border-b border-white/10" : "bg-transparent py-6"
                 }`}
         >
             <div className="container mx-auto px-4 flex justify-between items-center">
@@ -72,7 +72,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="md:hidden absolute top-full left-0 w-full bg-navy-bg/95 backdrop-blur-lg border-b border-white/10"
+                        className="md:hidden absolute top-full left-0 w-full bg-navy-bg border-b border-white/10"
                     >
                         <div className="flex flex-col items-center py-8 gap-6">
                             {navLinks.map((link) => (
