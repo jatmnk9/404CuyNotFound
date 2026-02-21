@@ -181,9 +181,7 @@ const Rifa = () => {
                         Enviar Voucher por WhatsApp
                     </button>
 
-                    <p className="mt-6 text-sm text-soft-white relative z-10">
-                        * Puedes revisar el avance de fondos en la sección interactiva más abajo.
-                    </p>
+
                 </motion.div>
             </div>
         </section>
