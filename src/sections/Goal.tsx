@@ -8,7 +8,7 @@ const Goal = () => {
     const isInView = useInView(ref, { once: true });
     const [count, setCount] = useState(0);
     const target = 4965;
-    const current = 240; // Ejemplo de progreso actual
+    const current = 271; // Ejemplo de progreso actual
 
     useEffect(() => {
         if (isInView) {
